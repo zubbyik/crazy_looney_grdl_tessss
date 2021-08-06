@@ -9,17 +9,65 @@
  * https://docs.gradle.org/current/userguide/build_init_plugin.html
  */
 
-allprojects {
-    afterEvaluate { project ->
-        if (project.hasTests) {
-            println "Adding test task to $project"
-            project.task('test') {
-                doLast {
-                    println "Running tests for $project"
-                }
-            }
+plugins {
+    id "java"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
+    implementation 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
+    implementation 'com.microsoft.playwright:playwright:1.13.0'
+}
+
+
+// Specifying Logical grouping of my projects source code
+// https://docs.gradle.org/current/dsl/org.gradle.api.tasks.SourceSet.html
+
+sourceSets {
+    main {
+        java {
+
         }
     }
+
+    test {
+        java {
+
+        }
+    }
+}
+
+// Set up Gradle to run with Junit
+// Refer to
+// https://docs.gradle.org/current/dsl/org.gradle.api.tasks.testing.Test.html#org.gradle.api.tasks.testing.Test:systemProperties
+
+test {
+    useJUnitPlatform()
+    testLogging.showStandardStreams = true
+
+    beforeTest {
+        descriptor -> {
+            logger.lifecycle("Test running => " + descriptor)
+        }
+    }
+// If you prefer to run test in parallel refer to and uncomment following code >>
+    // 1. https://junit.org/junit5/docs/snapshot/user-guide/index.html#writing-tests-parallel-execution
+    // 2. https://playwright.dev/java/docs/test-runners
+
+
+    //systemProperties "junit.jupiter.execution.parallel.enabled":  true
+    //systemProperties "junit.jupiter.execution.parallel.mode.default": "same_thread"
+    //systemProperties "junit.jupiter.execution.parallel.mode.classes.default": "concurrent"
+    // systemProperties "junit.jupiter.execution.parallel.config.strategy": "dynamic"
+    // systemProperties "junit.jupiter.execution.parallel.config.dynamic.factor": 0.5
+
+
+    systemProperties "webtest.url" : "http://www.example.com"
+
 }
 
 
