@@ -1,5 +1,3 @@
 FROM gradle:7.1.1-jdk11
-COPY build.gradle .
-RUN gradle clean
-COPY . .
+COPY --chown=gradle:gradle . /home/gradle/src
 RUN gradle clean test
