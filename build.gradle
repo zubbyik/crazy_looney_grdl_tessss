@@ -48,8 +48,8 @@ sourceSets {
 // https://docs.gradle.org/current/dsl/org.gradle.api.tasks.testing.Test.html#org.gradle.api.tasks.testing.Test:systemProperties
 
 test {
-    targetCompatibility = '8'
-    sourceCompatibility = '8'
+    targetCompatibility = '11'
+    sourceCompatibility = '11'
     useJUnitPlatform()
     testLogging.showStandardStreams = true
     beforeTest {
