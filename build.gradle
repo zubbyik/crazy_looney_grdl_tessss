@@ -28,15 +28,17 @@ dependencies {
 // https://docs.gradle.org/current/dsl/org.gradle.api.tasks.SourceSet.html
 
 sourceSets {
-    main {
-        java {
+    sourceSets {
+        main {
+            java {
 
+            }
         }
-    }
 
-    test {
-        java {
+        test {
+            java {
 
+            }
         }
     }
 }
@@ -46,9 +48,10 @@ sourceSets {
 // https://docs.gradle.org/current/dsl/org.gradle.api.tasks.testing.Test.html#org.gradle.api.tasks.testing.Test:systemProperties
 
 test {
+    targetCompatibility = '11'
+    sourceCompatibility = '11'
     useJUnitPlatform()
     testLogging.showStandardStreams = true
-
     beforeTest {
         descriptor -> {
             logger.lifecycle("Test running => " + descriptor)
