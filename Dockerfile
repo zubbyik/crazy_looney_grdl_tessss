@@ -1,3 +1,5 @@
 FROM gradle:7.1.1-jdk11
-COPY . /home/gradle
+COPY build.gradle /home/gradle
+RUN gradle
+COPY . .
 CMD ["gradle", "test"]
