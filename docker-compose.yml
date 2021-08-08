@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  runner:
+    depends_on: ["testrunner"]
+    build:
+      - dockerfile: .
+    volumes:
+      - grd_data:/home/gradle
+  testrunner:
+    image: "mcr.microsoft.com/playwright/java"
+    volumes:
+      - grd_data:/home/gradle
+volumes:
+  grd_data:
