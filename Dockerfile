@@ -3,5 +3,5 @@ WORKDIR /home/imad
 COPY pom.xml .
 RUN mvn install -D skipTests --no-transfer-progress
 ADD . .
-RUN mvn clean
+RUN mvn clean test
 
