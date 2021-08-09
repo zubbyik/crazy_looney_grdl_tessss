@@ -33,8 +33,8 @@ RUN apt-get update \
         curl  \
     && rm -rf /var/lib/apt/lists/*
 
-ENV PLAYWRIGHT_BROWSERS_PATH=./ms-playwright
-RUN mkdir /ms-playwright && chmod -R 777 $PLAYWRIGHT_BROWSERS_PATH
+ENV PLAYWRIGHT_BROWSERS_PATH=${PWD}/ms-playwright
+RUN mkdir ms-playwright && chmod -R 777 $PLAYWRIGHT_BROWSERS_PATH
 ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 ENV GRADLE_VERSION 7.1.1
 ARG GRADLE_DOWNLOAD_SHA256=bf8b869948901d422e9bb7d1fa61da6a6e19411baa7ad6ee929073df85d6365d
