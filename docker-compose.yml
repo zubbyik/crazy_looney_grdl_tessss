@@ -6,6 +6,7 @@ services:
     build: .
     volumes:
       - grd_data:/home/gradle
+    command: ["gradle", "clean", "test"]
   testrunner:
     image: "mcr.microsoft.com/playwright/java"
     volumes:
