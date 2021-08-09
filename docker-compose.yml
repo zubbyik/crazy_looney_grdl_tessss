@@ -6,5 +6,11 @@ services:
     volumes:
       - type: bind
         source: ${PWD}/src
+        target: /home/imad/src
+      - type: volume
+        source: store_grd
         target: /home/imad
+
     command: ["mvn", "clean", "test"]
+volumes:
+  store_grd:
