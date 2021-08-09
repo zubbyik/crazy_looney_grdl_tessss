@@ -43,7 +43,7 @@ RUN apt-get update \
         && mv "gradle-${GRADLE_VERSION}" "${GRADLE_HOME}/" \
         && ln --symbolic "${GRADLE_HOME}/bin/gradle" /usr/bin/gradle \
         && echo "Testing Gradle installation" \
-        && gradle --version \
+        && gradle --version
 
 ENV PLAYWRIGHT_BROWSERS_PATH=/home/gradle/ms-playwright
 RUN mkdir /home/gradle/ms-playwright && chmod -R 777 $PLAYWRIGHT_BROWSERS_PATH
@@ -52,6 +52,6 @@ ENV GRADLE_VERSION 7.1.1
 ARG GRADLE_DOWNLOAD_SHA256=bf8b869948901d422e9bb7d1fa61da6a6e19411baa7ad6ee929073df85d6365d
 ADD . .
 RUN cd /home/gradle/scripts && ./download_driver_for_all_platforms.sh && \
-    gradle -x test build \
+    gradle -x test build 
 CMD ["gradle", "test"]
 
