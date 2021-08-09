@@ -2,14 +2,7 @@ version: "3"
 
 services:
   runner:
-    depends_on: ["testrunner"]
     build: .
     volumes:
-      - grd_data:/home/gradle
-    command: ["gradle", "clean", "test"]
-  testrunner:
-    image: "mcr.microsoft.com/playwright/java"
-    volumes:
-      - grd_data:/home/gradle
-volumes:
-  grd_data:
+      - ./src:/home/imad
+    command: ["mvn", "clean", "test"]
