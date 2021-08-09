@@ -5,6 +5,6 @@ services:
     build: .
     volumes:
       - type: bind
-        source: ./src
+        source: ${PWD}/src
         target: .
     command: ["mvn", "clean", "test"]
