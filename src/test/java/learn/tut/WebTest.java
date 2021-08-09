@@ -14,7 +14,7 @@ public class WebTest {
         try(Playwright playwright = Playwright.create()){
             Browser browser = playwright.firefox().launch();
             Page page = browser.newPage();
-            page.navigate("http://www.example.com");
+            page.navigate(url);
             page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get("src/test/resources/playwright_capture.png")).setFullPage(true));
             System.out.println(page.url());
             System.out.println(page.title());
