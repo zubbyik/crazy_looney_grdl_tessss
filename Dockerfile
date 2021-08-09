@@ -50,7 +50,7 @@ ENV PLAYWRIGHT_BROWSERS_PATH=/home/gradle/ms-playwright
 RUN mkdir /home/gradle/ms-playwright && chmod -R 777 $PLAYWRIGHT_BROWSERS_PATH
 ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 ADD . .
-RUN cd /home/gradle/scripts && ./download_driver_for_all_platforms.sh && \
+RUN cd /home/gradle/scripts && /bin/bash download_driver_for_all_platforms.sh && \
     gradle -x test build
 CMD ["gradle", "test"]
 
