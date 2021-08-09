@@ -51,7 +51,7 @@ RUN set -o errexit -o nounset \
     && echo "Testing Gradle installation" \
     && gradle --version \
 COPY ./scripts /home/gradle
-RUN cd scripts && ./download_driver_for_all_platforms.sh && \
+RUN cd /home/gradle/scripts && ./download_driver_for_all_platforms.sh && \
     gradle -x test build \
 CMD ["gradle", "test"]
 
