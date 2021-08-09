@@ -9,7 +9,7 @@ cd "$(dirname $0)"
 if [[ ($1 == '-h') || ($1 == '--help') ]]; then
   echo ""
   echo "This script for downloading playwright-cli binaries for all platforms."
-  echo "The downloaded files will be put into directory 'driver-bundle/src/main/resources/driver'."
+  echo "The downloaded files will be put into directory '${PROJECT_HOME}/src/main/resources/driver'."
   echo ""
   echo "Usage: scripts/download_driver_for_all_platforms.sh [option]"
   echo ""
@@ -23,7 +23,7 @@ fi
 CLI_VERSION=$(head -1 ./CLI_VERSION)
 FILE_PREFIX=playwright-$CLI_VERSION
 
-cd ../driver-bundle/src/main/resources
+cd ${PROJECT_HOME}/src/main/resources
 
 if [[ ($1 == '-f') || ($1 == '--force') ]]; then
   echo "Deleting existing drivers from $(pwd)"

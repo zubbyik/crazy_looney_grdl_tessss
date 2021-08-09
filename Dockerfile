@@ -18,6 +18,7 @@ RUN set -o errexit -o nounset \
 VOLUME /home/gradle/.gradle
 
 WORKDIR /home/gradle
+ENV PROJECT_HOME /home/gradle
 
 RUN apt-get update \
         && apt-get install --yes --no-install-recommends \
