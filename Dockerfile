@@ -31,7 +31,7 @@ RUN apt-get update \
         subversion \
         openjdk-11-jdk \
         curl  \
-    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf /var/lib/apt/lists/*
 
 ENV PLAYWRIGHT_BROWSERS_PATH=./ms-playwright
 RUN mkdir /ms-playwright && chmod -R 777 $PLAYWRIGHT_BROWSERS_PATH
@@ -41,16 +41,13 @@ ARG GRADLE_DOWNLOAD_SHA256=bf8b869948901d422e9bb7d1fa61da6a6e19411baa7ad6ee92907
 RUN set -o errexit -o nounset \
     && echo "Downloading Gradle" \
     && wget --no-verbose --output-document=gradle.zip "https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip" \
-    \
     && echo "Checking download hash" \
     && echo "${GRADLE_DOWNLOAD_SHA256} *gradle.zip" | sha256sum --check - \
-    \
     && echo "Installing Gradle" \
     && unzip gradle.zip \
     && rm gradle.zip \
     && mv "gradle-${GRADLE_VERSION}" "${GRADLE_HOME}/" \
     && ln --symbolic "${GRADLE_HOME}/bin/gradle" /usr/bin/gradle \
-    \
     && echo "Testing Gradle installation" \
     && gradle --version \
 COPY ./scripts /home/gradle
