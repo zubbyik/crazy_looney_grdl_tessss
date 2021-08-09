@@ -1,6 +1,6 @@
 FROM gradle:7.1.1-jdk11
 WORKDIR /home
-RUN /bin/bash gradle init -Ptype=basic
+RUN gradle init -Ptype=basic
 COPY build.gradle .
 RUN /bin/bash gradlew build -x test
 COPY . .
