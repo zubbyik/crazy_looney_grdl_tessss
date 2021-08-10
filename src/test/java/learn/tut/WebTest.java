@@ -12,6 +12,7 @@ public class WebTest {
     @Test
     public void checkWeb(){
         try(Playwright playwright = Playwright.create()){
+            String url = null;
             Browser browser = playwright.firefox().launch();
             Page page = browser.newPage();
             page.navigate(url);
