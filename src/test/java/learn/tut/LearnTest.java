@@ -2,8 +2,6 @@ package learn.tut;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Properties;
-
 import static  org.junit.jupiter.api.Assertions.*;
 
 public class LearnTest {
