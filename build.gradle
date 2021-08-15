@@ -67,7 +67,7 @@ test {
         events "PASSED", "SKIPPED", "FAILED", "STANDARD_OUT", "STANDARD_ERROR"
     }
     beforeTest {
-        descriptor -> {
+        descriptor  {
             logger.lifecycle("Test running => " + descriptor)
         }
     }
