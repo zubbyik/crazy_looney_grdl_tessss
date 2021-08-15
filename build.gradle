@@ -27,7 +27,7 @@ dependencies {
 // Specifying Logical grouping of my projects source code
 // https://docs.gradle.org/current/dsl/org.gradle.api.tasks.SourceSet.html
 
-sourceSets {
+
     sourceSets {
         main {
             java {
@@ -41,17 +41,30 @@ sourceSets {
             }
         }
     }
-}
 
 // Set up Gradle to run with Junit
 // Refer to
 // https://docs.gradle.org/current/dsl/org.gradle.api.tasks.testing.Test.html#org.gradle.api.tasks.testing.Test:systemProperties
 
+
+reporting.baseDir = "my_reports"
+testResultsDirName = "$buildDir/my-test-result"
+
+tasks.register('showDirs'){
+    doLast {
+        logger.quiet(rootDir.toPath().relativize(project.reportsDir.toPath()).toString())
+        logger.quiet(rootDir.toPath().relativize(project.testResultsDir.toPath()).toString())
+    }
+}
+
 test {
     targetCompatibility = '11'
     sourceCompatibility = '11'
     useJUnitPlatform()
-    testLogging.showStandardStreams = true
+    testLogging {
+        showStandardStreams = true
+        events "PASSED", "SKIPPED", "FAILED", "STANDARD_OUT", "STANDARD_ERROR"
+    }
     beforeTest {
         descriptor -> {
             logger.lifecycle("Test running => " + descriptor)
@@ -70,7 +83,9 @@ test {
 
 
     systemProperties "webtest.url" : "http://www.example.com"
-
+filter {
+    includeTestsMatching "*Web*"
+}
 }
 
 
