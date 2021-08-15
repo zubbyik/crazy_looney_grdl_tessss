@@ -83,6 +83,9 @@ test {
 
 
     systemProperties "webtest.url" : "http://www.example.com"
+
+    scanForTestClasses false
+
 filter {
     includeTestsMatching "*Web*"
 }
