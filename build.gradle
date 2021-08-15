@@ -58,6 +58,7 @@ tasks.register('showDirs'){
 }
 
 test {
+    failFast false
     targetCompatibility = '11'
     sourceCompatibility = '11'
     useJUnitPlatform()
