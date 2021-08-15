@@ -66,10 +66,8 @@ test {
         showStandardStreams = true
         events "PASSED", "SKIPPED", "FAILED", "STANDARD_OUT", "STANDARD_ERROR"
     }
-    beforeTest {
-        descriptor  {
-            logger.lifecycle("Test running => " + descriptor)
-        }
+    beforeTest { descriptor ->
+             logger.lifecycle("Test running => " + descriptor)
     }
 // If you prefer to run test in parallel refer to and uncomment following code >>
     // 1. https://junit.org/junit5/docs/snapshot/user-guide/index.html#writing-tests-parallel-execution
