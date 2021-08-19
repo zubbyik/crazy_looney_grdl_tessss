@@ -8,7 +8,6 @@
 package learn.tut;
 
 import com.microsoft.playwright.*;
-import org.junit.Ignore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -34,7 +33,7 @@ public class MorePagesTest {
      * Initialize playwright.
      */
     @BeforeEach
-    public static void initializePlaywright() {
+    public void initializePlaywright() {
         Playwright playwright = Playwright.create();
         chromium = playwright.chromium();
 
