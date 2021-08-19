@@ -7,8 +7,14 @@ import org.junit.jupiter.api.Test;
 
 import java.nio.file.Paths;
 
+/**
+ * The type Web test.
+ */
 public class WebTest {
 
+    /**
+     * Check web.
+     */
     @Test
     public void checkWeb(){
         try(Playwright playwright = Playwright.create()){
