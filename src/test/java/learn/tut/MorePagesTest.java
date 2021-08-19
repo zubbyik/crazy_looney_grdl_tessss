@@ -42,6 +42,7 @@ public class MorePagesTest {
     /**
      * Check dashboard.
      */
+    /*
     @Test
     @Tag("desktop")
     void checkDashboard() {
