@@ -22,6 +22,7 @@ repositories {
 dependencies {
     implementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
     implementation 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
+
     implementation 'com.microsoft.playwright:playwright:1.14.0'
     testImplementation 'io.cucumber:cucumber-java:6.11.0'
     testImplementation 'io.cucumber:cucumber-junit:6.11.0'
@@ -62,7 +63,7 @@ tasks.register("cucumber", JavaExec) {
 
     main = "io.cucumber.core.cli.Main"
     classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
-    args = ['--plugin', 'pretty', '--glue', 'learn.cucks', 'src/test/resources']
+    args = ['--plugin', 'pretty', '--glue', 'StepDefinition', 'src/test/feature']
 }
 
 

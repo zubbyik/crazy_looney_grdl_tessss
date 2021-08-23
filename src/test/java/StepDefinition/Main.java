@@ -1,4 +1,4 @@
-package learn.cucks;
+package StepDefinition;
 
 public class Main {
     public static void main(String[] args) {
