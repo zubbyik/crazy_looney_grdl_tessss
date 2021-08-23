@@ -60,13 +60,11 @@ configurations {
 tasks.register("cucumber", JavaExec) {
     dependsOn testClasses
 
-
     main = "io.cucumber.core.cli.Main"
     classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
     args = ['--plugin', 'pretty', '--glue', 'learn.cucks', 'src/test/resources']
-
-
 }
+
 
 
 test {
