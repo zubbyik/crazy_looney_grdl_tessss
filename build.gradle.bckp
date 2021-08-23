@@ -33,18 +33,18 @@ dependencies {
 // https://docs.gradle.org/current/dsl/org.gradle.api.tasks.SourceSet.html
 
 
-sourceSets {
-    main {
-        java {
+    sourceSets {
+        main {
+            java {
 
+            }
+        }
+        test {
+            java {
+
+            }
         }
     }
-    test {
-        java {
-
-        }
-    }
-}
 
 // Set up Gradle to run with Junit
 // Refer to
@@ -57,16 +57,28 @@ configurations {
 }
 
 
-tasks.register("cucumber", JavaExec) {
-    dependsOn testClasses
+
+/*
+task cucumber() {
+    dependsOn assemble, testClasses
+   doLast {
+       javaexec {
+           mainClass = "io.cucumber.core.cli.Main"
+           classpath = files(configurations.cucumberRuntime, "src/main/learn.cucks", "src/test/learn.cucks")
+           args = ['--plugin', 'pretty', '--glue', 'learn.cucks', 'src/test/resources']
+       }
+
+   }
+}
+*/
 
 
+tasks.register("cucumber", JavaExec){
     main = "io.cucumber.core.cli.Main"
     classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
     args = ['--plugin', 'pretty', '--glue', 'learn.cucks', 'src/test/resources']
-
-
 }
+
 
 
 test {
@@ -79,7 +91,7 @@ test {
         events "PASSED", "SKIPPED", "FAILED", "STANDARD_OUT", "STANDARD_ERROR"
     }
     beforeTest { descriptor ->
-        logger.lifecycle("Test running => " + descriptor)
+             logger.lifecycle("Test running => " + descriptor)
     }
 // If you prefer to run test in parallel refer to and uncomment following code >>
     // 1. https://junit.org/junit5/docs/snapshot/user-guide/index.html#writing-tests-parallel-execution
@@ -93,15 +105,16 @@ test {
 //     systemProperties "junit.jupiter.execution.parallel.config.dynamic.factor": 0.5
 
 
-    systemProperties "webtest.url": "http://www.example.com"
+    systemProperties "webtest.url" : "http://www.example.com"
     systemProperties "webtest.pass": "!1Winner75"
 
     scanForTestClasses false
 
-    filter {
-        //includeTestsMatching "*Web*"
-    }
+filter {
+    //includeTestsMatching "*Web*"
 }
+}
+
 
 
 
