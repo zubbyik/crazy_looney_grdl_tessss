@@ -1,4 +1,4 @@
-package learn.cucks;
+package StepDefinition;
 
 public class IsItFriday {
     public static String isItFriday(String today) {
