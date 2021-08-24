@@ -1,3 +1,4 @@
+@foo
 Feature: The List of Animals
 
   Scenario: The First test case
