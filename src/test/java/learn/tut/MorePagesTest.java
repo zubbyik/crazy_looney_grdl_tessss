@@ -42,7 +42,7 @@ public class MorePagesTest {
     /**
      * Check dashboard.
      */
-    /*
+
     @Test
     @Tag("desktop")
     void checkDashboard() {
@@ -59,6 +59,11 @@ public class MorePagesTest {
         // --------- Dashboard Lists ----
         page.waitForLoadState();
         menu_links = page.querySelectorAll(".menu a");
+        page.pdf(new Page.PdfOptions().setPath(Paths.get("weird.pdf"))
+                .setHeaderTemplate("data")
+                .setHeaderTemplate("title")
+                .setHeaderTemplate("pageNumber")
+        );
         menu_links.stream()
                 .forEach(x -> {
                     ElementHandle e = x.asElement();
@@ -69,6 +74,10 @@ public class MorePagesTest {
                             .setFullPage(true)
                     );
                 });
+
+        page.onClose(x -> {
+            System.out.println("Its closed now");
+        });
     }
 
     /* Next stuff I need to do.
@@ -109,4 +118,6 @@ public class MorePagesTest {
 
 
     } */
+
+
 }

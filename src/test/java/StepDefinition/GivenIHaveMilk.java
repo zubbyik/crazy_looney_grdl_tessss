@@ -3,8 +3,13 @@ package StepDefinition;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Before;
 
 public class GivenIHaveMilk {
+    @Before
+    public void setup(){
+        System.out.println("Before Each Test");
+    }
 
     @Given("I am out shopping")
     public void i_am_out_shopping() {
